@@ -33,6 +33,9 @@ public class FirstFragAdapter extends BaseAdapter {
         this.checkMode = checkMode;
         notifyDataSetChanged();
     }
+    public boolean isCheckMode(){
+        return checkMode;
+    }
 
 
     @Override

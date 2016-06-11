@@ -6,11 +6,14 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 
 import com.eetrust.securedoc.adapter.FirstFragAdapter;
 
@@ -26,6 +29,7 @@ public class FirstFragment extends Fragment implements SwipeRefreshLayout.OnRefr
     private SwipeRefreshLayout refresh;
     private Toolbar toolbar;
     private FirstFragAdapter adapter;
+    private PopupWindow popupWindow;
 
     @Nullable
     @Override
@@ -44,6 +48,8 @@ public class FirstFragment extends Fragment implements SwipeRefreshLayout.OnRefr
         toolbar.setOnMenuItemClickListener(this);
          adapter=new FirstFragAdapter(getActivity(),data);
         lv.setAdapter(adapter);
+       View popuContent= inflater.inflate(R.layout.firstfrag_popu,null);
+        popupWindow=new PopupWindow(popuContent, ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         return root;
     }
 
@@ -60,10 +66,18 @@ public class FirstFragment extends Fragment implements SwipeRefreshLayout.OnRefr
     @Override
     public boolean onMenuItemClick(MenuItem item) {
           switch (item.getItemId()){
-              case R.id.add:
-                  break;
+//              case R.id.add:
+//                  if (!popupWindow.isShowing())
+//                 // popupWindow.showAsDropDown(toolbar,-100,0, Gravity.BOTTOM|Gravity.RIGHT);
+//                  else
+//                   // popupWindow.dismiss();
+//                  break;
               case R.id.select:
-                  adapter.setCheckMode(true);
+                  if (adapter.isCheckMode())
+                  adapter.setCheckMode(false);
+                  else
+                     adapter.setCheckMode(true);
+
                   break;
           }
         return true;

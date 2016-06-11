@@ -28,9 +28,9 @@ public class FileDialog extends Dialog {
 
         setContentView(R.layout.dialog_file);
 
-          getWindow().setGravity(Gravity.BOTTOM);
-        getWindow().setWindowAnimations(R.style.dialogAnim);
-          getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            getWindow().setGravity(Gravity.BOTTOM);
+            getWindow().setWindowAnimations(R.style.dialogAnim);
+            getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
            getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
        tv_title= (TextView) findViewById(R.id.dialog_title);
         tv_title.setText(title);
